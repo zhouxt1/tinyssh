@@ -858,6 +858,12 @@ tinysshd: tinysshd.o $(OBJLIB) randombytes.o libs
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o tinysshd tinysshd.o \
 	$(OBJLIB) $(LDFLAGS) `cat libs` randombytes.o
 
+tinysshd-listen.o: tinysshd-listen.c main.h
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c tinysshd-listen.c
+
+tinysshd-listen: tinysshd-listen.o $(OBJLIB) randombytes.o libs
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o tinysshd-listen tinysshd-listen.o \
+	$(OBJLIB) $(LDFLAGS) `cat libs` randombytes.o
 
 test-crypto: test-crypto.o $(OBJLIB) libs
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o test-crypto test-crypto.o \
